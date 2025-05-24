@@ -364,7 +364,7 @@ background-color:#1d3557;
 }
 
 .mini-tab {
-  background-color: white;
+  background-color: slategray;
   color: Black;
   border: none;
 
@@ -379,8 +379,13 @@ font-size: 13px;
 
 .mini-tab:hover,
 .mini-tab.active {
-  background-color:slategray;
+  background-color:white;
 color: Black;
+transform: scale(1.05);
+  cursor: pointer;
+box-shadow: 0 6px 20px rgba(25, 25, 229, 0.2);
+
+
 }
 
 .project-grid {
@@ -399,6 +404,14 @@ color: Black;
   backdrop-filter: blur(8px);
   color: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  
+
 }
 
 .project-card img {
@@ -413,15 +426,15 @@ color: Black;
 }
 
 .project-card a {
-  color: black;
+  color: white;
 font-weight:bold;
   text-decoration: none;
   font-size: 0.9em;
 }
 #education {
-  max-width: 90%;
+  max-width: 94%;
 padding:10%;
-border-radius: 5%;
+border-radius: 4%;
   margin: 3rem auto;
  
   font-family: Arial, sans-serif;
@@ -600,9 +613,9 @@ Let’s create something amazing together.</p>
   
 
   <div class="mini-nav">
-    <button class="mini-tab active" onclick="showProjects('web')">WEB DEVELOPMENT</button>
-    <button class="mini-tab" onclick="showProjects('ml')">ML PROJECTS</button>
-    <button class="mini-tab" onclick="showProjects('other')">OTHER PROJECTS</button>
+    <button class="mini-tab active" onclick="showProjects('web',this)">WEB DEVELOPMENT</button>
+    <button class="mini-tab" onclick="showProjects('ml',this)">ML PROJECTS</button>
+    <button class="mini-tab" onclick="showProjects('other',this)">OTHER PROJECTS</button>
   </div>
 
   <div id="project-content">
@@ -777,61 +790,82 @@ const projects = {
       {
         title: "Railway Website",
         img: "https://ik.imagekit.io/jxtjn4hpqj/rail.png?updatedAt=1748060488962",
-        desc: "A Railway Reservation System built with MERN.",
+        desc: "A Railway Reservation System built with MERN. Offers train booking, PNR tracking etc.",
         link: "https://github.com/sruthisoppa/Railway-Reservation-System"
+      },
+{
+        title: "Personal Website",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/Screenshot%202025-05-24%20135540.png?updatedAt=1748075178352",
+        desc: "An interactive personal portfolio app featuring sticky-note-style cards.",
+        link: "https://github.com/sruthisoppa/Sruthi-Portfolio"
       },
       {
         title: "Blog Platform",
         img: "https://ik.imagekit.io/jxtjn4hpqj/Screenshot%202025-05-24%20104816.png?updatedAt=1748069775693",
-        desc: "Full-stack blog platform using Node.js and MongoDB.",
-        link: "#"
+        desc: "Full-stack blog platform using Node.js and MongoDB. Used streamlit.",
+        link: "https://github.com/sruthisoppa/Blog-personal"
       }
     ],
     ml: [
       {
         title: "Spam Classifier",
         img: "https://ik.imagekit.io/jxtjn4hpqj/Screenshot%202025-05-24%20095612.png?updatedAt=1748060803517",
-        desc: "Email spam detection using Naive Bayes in Python.",
+        desc: "Email spam detection using Naive Bayes in Python. Used streamlit.",
         link: "https://github.com/sruthisoppa/Email-Spam-Detection"
+      },
+{
+        title: "Admission Prediction",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/Screenshot%202025-05-24%20140004.png?updatedAt=1748075430199",
+        desc: "Admission Prediction using Linear Regression and Decision trees in Python.",
+        link: "https://github.com/sruthisoppa/Graduate-Admission-Prediction"
       },
       {
         title: "Stock Predictor",
         img: "https://ik.imagekit.io/jxtjn4hpqj/Screenshot%202025-05-24%20105607.png?updatedAt=1748072823940",
         desc: "Time series forecasting using LSTM networks.",
-        link: "#"
+        link: "https://github.com/sruthisoppa/Stock-Prediction"
       }
     ],
     other: [
       {
         title: "Quiz App",
         img: "https://ik.imagekit.io/jxtjn4hpqj/Screenshot%202025-05-24%20122712.png?updatedAt=1748069906680",
-        desc: "Mobile quiz app built with Java and SQLite.",
-        link: "#"
+        desc: "Mobile quiz app built with Java and SQLite. Real time Leaderboard and Admin Panel Included.",
+        link: "https://github.com/sruthisoppa/Quiz-App"
       }
     ]
   };
 
-  function showProjects(category) {
-    document.querySelectorAll(".mini-tab").forEach(tab => tab.classList.remove("active"));
-    event.target.classList.add("active");
+  function showProjects(category, clickedButton = null) {
+  // Remove active class from all buttons
+  document.querySelectorAll(".mini-tab").forEach(tab => tab.classList.remove("active"));
 
-    const container = document.getElementById("project-content");
-    container.innerHTML = "";
-
-    const cards = projects[category].map(p => `
-      <div class="project-card">
-        <img src="${p.img}" alt="${p.title}">
-        <h3>${p.title}</h3>
-        <p>${p.desc}</p>
-        <a href="${p.link}" target="_blank">VIEW</a>
-      </div>
-    `).join("");
-
-    container.innerHTML = `<div class="project-grid">${cards}</div>`;
+  // Add active class only if clickedButton exists
+  if (clickedButton) {
+    clickedButton.classList.add("active");
+  } else {
+    // If called on load, activate the 'Web Development' button by default
+    document.querySelector(".mini-tab").classList.add("active");
   }
 
-  // Load default
-  window.onload = () => showProjects('web');
+  const container = document.getElementById("project-content");
+  container.innerHTML = "";
+
+  const cards = projects[category].map(p => `
+    <div class="project-card">
+      <img src="${p.img}" alt="${p.title}">
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <a href="${p.link}" target="_blank">VIEW PROJECT</a>
+    </div>
+  `).join("");
+
+  container.innerHTML = `<div class="project-grid">${cards}</div>`;
+}
+
+// Load default projects on page load
+window.onload = () => showProjects('web');
+
 
   document.addEventListener("DOMContentLoaded", function () {
     const faders = document.querySelectorAll(".fade-in-section");
