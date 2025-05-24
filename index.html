@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Your Name</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(-30px); /* top to bottom */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+#typewriter {
+  border-right: 2px solid white; /* blinking cursor */
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink 0.7s steps(1) infinite;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.resume-float {
+  position: fixed;
+  top: 40%;
+  left: 0;
+  background-color: white; /* blue */
+  color: black;
+  padding: 12px 18px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1500;
+  transition: background-color 0.3s ease;
+}
+
+.resume-float:hover {
+  background-color: grey;
+}
+
+.resume-float i {
+  font-size: 1.2rem;
+}
+
+nav ul li a.active {
+  color: #1e40af;
+  border-bottom: 2px solid #1d3557;
+  padding-bottom: 2px;
+}
+#skills{
+background-color: white;
+color: #1d3557;
+}
+
+#skills p{
+color: #1d3557;
+}
+#contact{
+background-color: white;
+color: #1d3557;
+}
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: #fff;
+      background: #1d3557;
+      }
+
+    header {
+      background-color: #ffffff;
+      color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem 20px;
+    }
+
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    nav ul li a:hover {
+      color: #1d3557;
+    }
+
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover {
+      padding-top: 140px;
+    }
+
+    .cover h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .cover h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .cover p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #e0f2fe;
+    }
+
+    .btn-primary {
+      background-color: white;
+      color: black;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+	font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background-color: grey;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #f9fafb;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #0f172a;
+      padding: 2rem 20px;
+      text-align: center;
+    }
+
+    .social-icons {
+      margin-bottom: 1rem;
+    }
+
+    .social-icons a {
+      color: #f9fafb;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #3b82f6;
+    }
+
+    .footer-text {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1d3557; /* gold or any highlight color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-right: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-text {
+  color: #1d3557;
+}
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: rgba(25, 25, 25, 0.03);
+  backdrop-filter: blur(6px);
+  color: white;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  color: white;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffffcc;
+text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #274c77;
+}
+.about-projects-section {
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+background-color:#1d3557;
+}
+
+.mini-nav {
+  margin-bottom: 30px;
+}
+
+.mini-tab {
+  background-color: white;
+  color: Black;
+  border: none;
+
+  margin: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 15px;
+font-size: 13px;
+  transition: 0.3s;
+}
+
+.mini-tab:hover,
+.mini-tab.active {
+  background-color:slategray;
+color: Black;
+}
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  width: 280px;
+  padding: 15px;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.project-card img {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  margin: 10px 0 5px;
+}
+
+.project-card a {
+  color: black;
+font-weight:bold;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+#education {
+  max-width: 90%;
+padding:10%;
+border-radius: 5%;
+  margin: 3rem auto;
+ 
+  font-family: Arial, sans-serif;
+background-color:white;
+}
+
+#education h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #1d3557;
+  font-weight: 700;
+}
+
+.timeline-content span{
+color: steelblue;
+font-size: 1.3rem;
+}
+
+.timeline-content h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.3rem;
+  color: #1d3557;
+}
+
+.timeline-content .timeframe {
+  margin: 0 0 0.7rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+.timeline-content p {
+  margin: 0;
+  color: #333;
+  line-height: 1.8;
+}
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 3px solid #1d3557;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -30px; /* half of border width (3px) + half of dot width (16px) */
+  top: 0px;
+  width: 14px;
+  height: 14px;
+  background-color: white;
+  border-radius: 50%;
+  border: 3px solid #1d3557;
+  box-sizing: content-box;
+}
+.skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 48px;
+  justify-content: center;
+  color: #1d3557; /* your theme color */
+}
+
+.skills-icons i {
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.skills-icons i:hover {
+  transform: scale(1.2);
+  color: #457b9d; /* lighter blue on hover */
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+<div class="logo">
+  <div class="logo-circle">SS</div>
+  <span class="logo-text">Portfolio</span>
+</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<a href="https://drive.google.com/file/d/1_Bn2vTztDXCleWoKWvdl5bIWtIlMCwRA/view?usp=sharing" target="_blank" class="resume-float" aria-label="View Resume">
+  <i class="fas fa-file-alt"></i> Resume
+</a>
+
+  <!-- Cover -->
+  <section class="cover" id="home" >
+<div class="fade-in-section">
+    <h1>SOPPA SRUTHI</h1>
+<h2><span id="typewriter"></span></h2>
+
+    <h2>CSE Undergraud | SRM University AP</h2>
+    <p>I build smart, fast, and beautiful things with code.
+From intuitive websites to intelligent machine learning models,
+I craft digital experiences that make a difference.
+Let’s create something amazing together.</p>
+    <a href="https://github.com/sruthisoppa" class="btn-primary">View My Work</a>
+</div> 
+ </section>
+
+  <!-- About -->
+  <section id="skills" class="fade-in-section">
+    <h2>Skills</h2><br>
+    <p>I build clean, accessible websites using HTML and CSS, add interactivity with JavaScript, and create scalable frontends with React and Node.js.</p><br>
+    <p>I use Python to analyze data, build predictive models, and solve real-world problems like spam detection and forecasting.</p><br>
+<p>I manage data efficiently with MongoDB and MySQL, track code changes with Git, and ensure smooth deployments using Docker.</p><br><br>
+    
+
+ <div class="skills-icons">
+    <!-- Web & Frontend -->
+    <i class="devicon-html5-plain colored" title="HTML5"></i>
+    <i class="devicon-css3-plain colored" title="CSS3"></i>
+    <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+    <i class="devicon-react-original colored" title="React"></i>
+    <i class="devicon-bootstrap-plain colored" title="Bootstrap"></i>
+
+    <!-- Backend -->
+    <i class="devicon-nodejs-plain colored" title="Node.js"></i>
+    <i class="devicon-express-original colored" title="Express.js"></i>
+    <i class="devicon-python-plain colored" title="Python"></i>
+
+    <!-- Databases -->
+    <i class="devicon-mongodb-plain colored" title="MongoDB"></i>
+    <i class="devicon-mysql-plain colored" title="MySQL"></i>
+
+    <!-- Machine Learning & Data Science -->
+    <i class="devicon-python-plain colored" title="Python (ML)"></i>
+    <i class="fab fa-python" title="Python"></i> <!-- FontAwesome Python icon -->
+    <i class="fas fa-robot" title="AI / Machine Learning"></i> <!-- generic robot icon -->
+    <i class="fas fa-database" title="Data"></i>
+
+    <!-- Tools -->
+    <i class="fab fa-git-alt" title="Git"></i>
+    <i class="fab fa-github" title="GitHub"></i>
+    <i class="fab fa-linux" title="Linux"></i>
+    <i class="fab fa-docker" title="Docker"></i>
+    <i class="fab fa-aws" title="AWS"></i>
+
+    <!-- Misc -->
+    <i class="fab fa-js-square" title="JavaScript"></i>
+    <i class="fab fa-html5" title="HTML5"></i>
+  </section>
+
+
+
+<section id="projects" class="about-projects-section">
+<div class="fade-in-section">
+  <h2>PROJECTS</h2>
+  
+
+  <div class="mini-nav">
+    <button class="mini-tab active" onclick="showProjects('web')">WEB DEVELOPMENT</button>
+    <button class="mini-tab" onclick="showProjects('ml')">ML PROJECTS</button>
+    <button class="mini-tab" onclick="showProjects('other')">OTHER PROJECTS</button>
+  </div>
+
+  <div id="project-content">
+    <!-- Projects will be loaded here -->
+  </div>
+</div>
+</section>
+
+
+
+
+<section id="education" class="fade-in-section">
+  <h2>Education</h2><br><br>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Bachelor of Technology in Computer Science</h3>
+        <span>SRM University AP — 2022 to 2026</span>
+        <p>Currently Studying. Focus on Software Engineering and AI.</p>
+<p><u><strong>Course Work</strong></u>: Data Structures and Algorithms, Web Technologies, Database Management Systems, Operating Sys-
+tems, Machine Learning, Computer Networks</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>High School Intermediate</h3>
+        <span>Sri Chaitanya Educational Institutions — 2020 to 2022</span>
+        <p>Top 10% of the class. Science stream with Computer Science electives. Strong foundation in <strong>mathematics</strong> with sharp problem-solving skills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Contact -->
+  <section id="contact" class="fade-in-section">
+  <div class="contact-container">
+    <h2>Contact Me<br><br></h2>
+    <form action="https://formspree.io/f/xrbqvjgg" method="POST" class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="name">FULL NAME</label>
+        <input type="text" name="name" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">EMAIL</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">MESSAGE</label>
+        <textarea name="message" id="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="formStatus" style="margin-top: 15px; text-align: center; color: lightgreen;"></div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/soppasruthi/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/sruthisoppa" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com/miss.ssruthi" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="footer-text">
+      © 2025 Sruthi Soppa. All rights reserved.
+    </div>
+  </footer>
+<script>
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  window.addEventListener("scroll", () => {
+    let currentSectionId = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        currentSectionId = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + currentSectionId) {
+        link.classList.add("active");
+      }
+    });
+  });
+    const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        status.textContent = "✅ Thank you! Your message has been sent.";
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          status.textContent = "❌ Error: " + data.errors.map(error => error.message).join(", ");
+        } else {
+          status.textContent = "❌ Oops! Something went wrong.";
+        }
+      }
+    } catch (error) {
+      status.textContent = "❌ Network error. Please try again later.";
+    }
+  });
+const typewriterElement = document.getElementById('typewriter');
+
+const lines = [
+  'Developer.',
+  'Problem Solver.',
+  'Designer.',
+  'Creator.'
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingSpeed = 150;
+const deletingSpeed = 75;
+const pauseTime = 1200;
+
+function type() {
+  const currentLine = lines[lineIndex];
+  
+  if (isDeleting) {
+    charIndex--;
+    typewriterElement.textContent = currentLine.substring(0, charIndex);
+  } else {
+    charIndex++;
+    typewriterElement.textContent = currentLine.substring(0, charIndex);
+  }
+
+  if (!isDeleting && charIndex === currentLine.length) {
+    // Pause at end of word before deleting
+    setTimeout(() => { isDeleting = true; type(); }, pauseTime);
+    return;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    lineIndex = (lineIndex + 1) % lines.length;
+  }
+
+  setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+}
+
+type();
+const projects = {
+    web: [
+      {
+        title: "Railway Website",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/rail.png?updatedAt=1748060488962",
+        desc: "A Railway Reservation System built with MERN.",
+        link: "https://github.com/sruthisoppa/Railway-Reservation-System"
+      },
+      {
+        title: "Blog Platform",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/image.png?updatedAt=1748063946647",
+        desc: "Full-stack blog platform using Node.js and MongoDB.",
+        link: "#"
+      }
+    ],
+    ml: [
+      {
+        title: "Spam Classifier",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/image.png?updatedAt=1748062855916",
+        desc: "Email spam detection using Naive Bayes in Python.",
+        link: "https://github.com/sruthisoppa/Email-Spam-Detection"
+      },
+      {
+        title: "Stock Predictor",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/image.png?updatedAt=1748063946647",
+        desc: "Time series forecasting using LSTM networks.",
+        link: "#"
+      }
+    ],
+    other: [
+      {
+        title: "Quiz App",
+        img: "https://ik.imagekit.io/jxtjn4hpqj/Mobile%20app/image.png?updatedAt=1748063750600",
+        desc: "Mobile quiz app built with Java and SQLite.",
+        link: "#"
+      }
+    ]
+  };
+
+  function showProjects(category) {
+    document.querySelectorAll(".mini-tab").forEach(tab => tab.classList.remove("active"));
+    event.target.classList.add("active");
+
+    const container = document.getElementById("project-content");
+    container.innerHTML = "";
+
+    const cards = projects[category].map(p => `
+      <div class="project-card">
+        <img src="${p.img}" alt="${p.title}">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <a href="${p.link}" target="_blank">VIEW</a>
+      </div>
+    `).join("");
+
+    container.innerHTML = `<div class="project-grid">${cards}</div>`;
+  }
+
+  // Load default
+  window.onload = () => showProjects('web');
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const faders = document.querySelectorAll(".fade-in-section");
+
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  });
+
+
+
+</script>
+</body>
+</html>
