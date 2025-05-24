@@ -99,6 +99,35 @@ color: #1d3557;
       color: #fff;
       background: #1d3557;
       }
+.menu-icon {
+  font-size: 26px;
+  cursor: pointer;
+  display: none;
+  color: #1f2937;
+width: 6%;
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+width: 23%;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
 
     header {
       background-color: #ffffff;
@@ -481,21 +510,26 @@ font-size: 1.3rem;
 
   <!-- Navbar -->
   <header>
-    <div class="navbar">
-<div class="logo">
-  <div class="logo-circle">SS</div>
-  <span class="logo-text">Portfolio</span>
-</div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <div class="navbar">
+    <div class="logo">
+      <div class="logo-circle">SS</div>
+      <span class="logo-text">Portfolio</span>
     </div>
-  </header>
+
+    <nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </div>
+</header>
+
 <a href="https://drive.google.com/file/d/1_Bn2vTztDXCleWoKWvdl5bIWtIlMCwRA/view?usp=sharing" target="_blank" class="resume-float" aria-label="View Resume">
   <i class="fas fa-file-alt"></i> Resume
 </a>
@@ -817,6 +851,11 @@ const projects = {
 
     faders.forEach(fader => {
       appearOnScroll.observe(fader);
+    });
+  });
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".menu-icon").addEventListener("click", () => {
+      document.getElementById("nav-links").classList.toggle("active");
     });
   });
 
